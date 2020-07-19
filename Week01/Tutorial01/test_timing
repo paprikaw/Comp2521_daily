@@ -1,0 +1,33 @@
+#!/bin/sh
+
+for t in 5000 10000 20000 50000
+do
+	echo === Test $t ===
+	./randList $t > randNumWithDuplicate
+	sort -n randNumWithDuplicate > orderdNumWithDuplicate
+	sort -nr randNumWithDuplicate > reversreNumWithDuplicate
+	seq $t > orderdNumWithNoDuplicate
+	seq $t | sort -nr > reverseNumWithNoDuplicate
+	seq $t | sort -R > randNumWithNoDuplicate
+	time ./useIntList < randNumWithDuplicate > out1 
+	time sort -n < randNumWithDuplicate > out2 
+	diff out1 out2
+	time ./useIntList < orderdNumWithDuplicate > out3
+	time sort -n < orderdNumWithDuplicate > out4
+	diff out3 out4
+	time ./useIntList < reversreNumWithDuplicate > out5
+	time sort -n < reversreNumWithDuplicate > out6
+	diff out5 out6
+	time ./useIntList < orderdNumWithNoDuplicate > out7
+	time sort -n < orderdNumWithNoDuplicate > out8
+	diff out7 out8
+	time ./useIntList < reverseNumWithNoDuplicate > out9
+	time sort -n < reverseNumWithNoDuplicate > out10
+	diff out9 out10
+	time ./useIntList < randNumWithNoDuplicate > out11
+	time sort -n < randNumWithNoDuplicate > out12
+	diff out11 out12
+
+done
+
+	rm out* randN* order* rever* 

@@ -1,0 +1,41 @@
+Input	Initial	Has	Number	AvgTime	AvgTime
+Size	Order	Dups	of runs	forusel	forsort
+5000	random	no	3	0.04sec	0.01sec
+5000	sorted	no	3	0.01sec	0.01sec
+5000	reverse	no	3	0.01sec	0.01sec
+5000	random	yes	3	0.04sec	0.01sec
+5000	sorted	yes	3	0.01sec	0.01sec
+5000	reverse	yes	3	0.01sec 0.01sec
+10000	random	no	3	0.14sec 0.01sec
+10000	sorted	no	3	0.01sec	0.01sec
+10000	reverse	no	3	0.01sec	0.01sec
+10000	random	yes	3	0.13sec 0.01sec
+10000	sorted	yes	3	0.01sec	0.01sec
+10000	reverse	yes	3	0.01sec	0.01sec
+20000   random  no  3   0.58sec 0.02sec
+20000   sorted  no  3   0.01sec 0.01sec
+20000   reverse no  3   0.01sec 0.01sec 
+20000   random  yes 3   0.61sec 0.02sec
+20000   sorted  yes 3   0.04sec 0.01sec
+20000   reverse yes 3   0.01sec 0.01sec
+50000   random  no  3   5.5sec  0.04sec
+50000   sorted  no  3   0.02sec 0.02sec
+50000   reverse no  3   0.02sec 0.02sec 
+50000   random  yes 3   5.49se 0.04sec
+50000   sorted  yes 3   0.02sec 0.02sec
+50000   reverse yes 3   0.02sec 0.02sec
+
+We can see when the input size is equal to 10000, there is no significant difference 
+between sort command and useIntList. We can know that both useIntList and sort can
+handle the task order 10000 input size well.
+
+When the input size has incremented to 20000, things are getting different. When the order of
+input number is reverse or sorted, there is still no significant difference between two algorithm, 
+whereas the big differece appeared when the order is random. We can see the sort command use a "magical"
+algorithm which makes the operation time incremented as a pattern of linear growth. On the other hand, 
+the operation time of my own algorithm experience a explosive increment when the input size is incremented from
+5000 to 50000 when it deal with random ordered int list.
+
+My assumption for this is that the time complexity of my algorithm is much higher than sort command when they
+deal with random int list. When it comes to reverse and sorted list, the time consumption of these two 
+algorithm is basically the same.
